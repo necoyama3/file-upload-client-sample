@@ -9,9 +9,8 @@ def post_multipart(host, port, selector, fields, files):
     if(selector.find('https') == 0):
         h = http.client.HTTPSConnection(host, port)
     else:
-        h = http.client.HTTPConnection("127.0.0.1", 8888)
+        h = http.client.HTTPConnection(host, port)
 
-    #h.set_tunnel(host, 8080)
     h.putrequest('POST', selector)
     h.putheader('content-type', content_type)
     h.putheader('content-length', str(len(body)))
